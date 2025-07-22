@@ -1,0 +1,191 @@
+
+.home-navbar {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(15px);
+  border-radius: 50px;
+  padding: 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  z-index: 1000;
+  height: 10%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.home-navbar {
+  width: 50%;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  margin-top: 2%;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-left .brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo {
+  width: 30px;
+padding: 0%;
+gap:0%;
+  height: 30px;
+  margin-right: 0.5rem;
+}
+
+
+.site-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+/* 🌙 Theme Toggle Styles (Uiverse.io adapted) */
+
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #48acda;
+  transition: .4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  left: 4px;
+  bottom: 3px;
+  z-index: 2;
+  background-color: #688586;
+  transition: .4s;
+}
+
+.sun svg {
+  position: absolute;
+  top: 3px;
+  left: 36px;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  animation: rotate 15s linear infinite;
+}
+
+.moon svg {
+  fill: #73C0FC;
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  animation: tilt 5s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tilt {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+  
+  
+}
+
+.input:checked + .slider {
+  background-color: #183153;
+}
+
+.input:focus + .slider {
+  box-shadow: 0 0 1px #183153;
+}
+
+.input:checked + .slider:before {
+  transform: translateX(30px);
+}
+/* 🔁 Responsive tweaks */
+@media (max-width: 768px) {
+  .navbar-title {
+    font-size: 1.2rem;
+  }
+
+  .home-navbar {
+    padding: 0 1rem;
+    width: 100%;
+  }
+
+  .navbar-logo {
+    height: 30px;
+    width: 30px;
+  }
+
+  .switch {
+    width: 55px;
+    height: 25px;
+  }
+
+  .slider:before {
+    height: 20px;
+    width: 20px;
+    top: 3px;
+  }
+
+  .sun svg, .moon svg {
+    width: 18px;
+    height: 18px;
+  }
+}

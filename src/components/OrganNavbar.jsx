@@ -19,7 +19,7 @@ const organs = [
   { name: "Heart", icon: heartIcon, path: "/heart" },
   { name: "Kidney", icon: kidneyIcon, path: "/kidney" },
   { name: "Liver", icon: liverIcon, path: "/liver" },
-  { name: "Urinary Bladder", icon: bladderIcon, path: "/urinary-bladder" },
+  { name: "Urinary Bladder", icon: bladderIcon, path: "/UrinaryBladder" },
 ];
 
 const OrganNavbar = () => {

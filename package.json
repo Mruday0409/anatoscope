@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "postbuild": "cpx public/__redirects dist",
+
     "preview": "vite preview"
   },
   "dependencies": {

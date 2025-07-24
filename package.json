@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "postbuild": "cp public/__redirects dist/__redirects",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -40,4 +41,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC"
+ 
+
 }

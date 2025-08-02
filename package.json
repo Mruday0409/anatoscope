@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-
     "preview": "vite preview"
   },
   "dependencies": {
@@ -41,5 +40,13 @@
   "main": "eslint.config.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mruday0409/anatoscope.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mruday0409/anatoscope/issues"
+  },
+  "homepage": "https://github.com/Mruday0409/anatoscope#readme"
 }

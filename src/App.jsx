@@ -19,6 +19,7 @@ function App() {
 
   return (
     <>
+    
       <ScrollToTop />
       
       {/* Show regular navbar on all pages except home */}

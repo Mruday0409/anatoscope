@@ -27,7 +27,7 @@ const OrganNavbar = () => {
   const centerRef = useRef(null);
   const [beamLeft, setBeamLeft] = useState(0);
 
-  useEffect(() => {
+  const updateBeamPosition = () => {
     const activeIcon = centerRef.current?.querySelector(".organ-icon-wrapper.active");
     if (activeIcon) {
       const parentRect = centerRef.current.getBoundingClientRect();
@@ -35,6 +35,24 @@ const OrganNavbar = () => {
       const left = iconRect.left - parentRect.left + iconRect.width / 2;
       setBeamLeft(left);
     }
+  };
+
+  useEffect(() => {
+    updateBeamPosition();
+  }, [location.pathname]);
+
+  useEffect(() => {
+    // Add resize event listener
+    const handleResize = () => {
+      updateBeamPosition();
+    };
+
+    window.addEventListener('resize', handleResize);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, [location.pathname]);
 
   return (

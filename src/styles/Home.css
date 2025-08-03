@@ -4,7 +4,7 @@ html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* 🚫 No scrollbars */
+  /* Removed overflow: hidden to allow normal scrolling */
 }
 
 /* === Organ Title === */

@@ -512,3 +512,108 @@ body[data-theme="dark"] .popup-body {
     font-size: 1rem;
   }
 }
+/* Section 3 */
+.section-3 {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 2rem;
+  background: url("/src/assets/images/heart-2.png") center no-repeat;
+    background-size: auto 90%;
+    background-position:center;
+}
+
+.section-3-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: auto;
+  width: 100%;
+  /* background: rgba(255, 255, 255, 0.85); optional white overlay for text readability */
+  border-radius: 12px; /* optional rounded effect */
+  padding: 2rem;
+}
+
+body[data-theme="dark"] .section-3-container {
+  /* background: rgba(30, 30, 30, 0.85); */
+}
+
+.section-3-left {
+  flex: 1;
+}
+
+.section-3-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.chamber-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.chamber-card {
+  background: var(--card-bg, #fff);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+body[data-theme="dark"] .chamber-card {
+  background: #1e1e1e;
+}
+
+.chamber-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.chamber-card h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  
+}
+
+.chamber-card p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #ff6b6b;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.section-3-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-3-heart-img {
+  max-width: 90%;
+  margin-left: 300px;
+  height: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-3-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .section-3-right {
+    order: -1;
+  }
+}

@@ -518,7 +518,7 @@ body[data-theme="dark"] .popup-body {
   display: flex;
   align-items: center;
   padding: 4rem 2rem;
-  background: url("/src/assets/images/heart-2.png") center no-repeat;
+  background: url("/src/assets/images/Heart-2.png") center no-repeat;
     background-size: auto 90%;
     background-position:center;
 }

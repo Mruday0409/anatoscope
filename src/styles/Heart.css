@@ -536,9 +536,9 @@ body[data-theme="dark"] .popup-body {
   padding: 2rem;
 }
 
-body[data-theme="dark"] .section-3-container {
-  /* background: rgba(30, 30, 30, 0.85); */
-}
+/* body[data-theme="dark"] .section-3-container {
+  background: rgba(30, 30, 30, 0.85);
+} */
 
 .section-3-left {
   flex: 1;

@@ -492,6 +492,7 @@ body[data-theme="dark"] .section-title h2 {
   gap: 2rem;
   margin-bottom: 2rem;
   min-height: 280px;
+  height: 420px;
 }
 
 .chamber-card {
@@ -510,6 +511,7 @@ body[data-theme="dark"] .section-title h2 {
   justify-content: space-between;
   flex: 1;
   min-width: 0;
+  max-width: calc(50% - 1rem);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
@@ -688,12 +690,13 @@ body[data-theme="dark"] .chamber-card:hover p {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 400px;
 }
 
 .section-3-heart-img {
   max-width: 90%;
-  margin-left: 300px;
   height: auto;
+  object-fit: contain;
 }
 
 /* Responsive */
@@ -963,8 +966,8 @@ body[data-theme="dark"] .chamber-card:hover p {
 .chamber-content p:has(strong:first-child),
 .chamber-content p strong:first-child {
   display: block;
-  font-family: 'Georgia', serif;
-  font-size: 0.7rem;
+  font-family: Arial;
+  font-size: 0.9rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 0.8rem;
@@ -1073,5 +1076,274 @@ body[data-theme="dark"] .section2-body p strong:first-child {
     width: 35px;
     height: 35px;
     font-size: 1rem;
+  }
+}
+
+/* Heart Values Horizontal Card */
+.heart-values-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto 0;
+  padding: 0;
+}
+
+.heart-values-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 107, 107, 0.2);
+  border-radius: 20px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.heart-values-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 203, 112, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.heart-values-card:hover::before {
+  opacity: 1;
+}
+
+body[data-theme="dark"] .heart-values-card {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(40, 40, 40, 0.85));
+  border-color: rgba(255, 107, 107, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.heart-values-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(255, 107, 107, 0.3);
+  border-color: rgba(255, 107, 107, 0.4);
+}
+
+.heart-values-icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 4px 8px rgba(255, 107, 107, 0.3));
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.heart-values-content {
+  flex: 1;
+}
+
+.heart-values-content h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="dark"] .heart-values-content h3 {
+  color: #ffffff;
+}
+
+.heart-values-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #7d5353;
+  margin: 0;
+}
+
+body[data-theme="dark"] .heart-values-content p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.heart-values-arrow {
+  font-size: 2rem;
+  color: #ff6b6b;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.heart-values-card:hover .heart-values-arrow {
+  transform: translateX(10px);
+  color: #ff5252;
+}
+
+/* Heart Values Popup Styles */
+.heart-values-popup {
+  background: rgba(75, 61, 61, 0.85);
+  backdrop-filter: blur(15px);
+}
+
+.heart-values-popup-content {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  border-radius: 25px;
+  border: 2px solid rgba(255, 107, 107, 0.4);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 107, 107, 0.2);
+  max-width: 700px;
+  width: 80%;
+  position: relative;
+  overflow: hidden;
+}
+
+.heart-values-popup-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(255, 203, 112, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.heart-values-header {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.3), rgba(255, 203, 112, 0.3));
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 107, 107, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heart-values-title-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.heart-values-icon-large {
+  font-size: 4rem;
+  filter: drop-shadow(0 6px 12px rgba(255, 107, 107, 0.4));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.heart-values-title h3 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.heart-values-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.heart-values-close {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+}
+
+.heart-values-close:hover {
+  background: rgba(255, 107, 107, 0.9);
+  border-color: #ff6b6b;
+  transform: scale(1.1);
+}
+
+.heart-values-body {
+  padding: 2rem;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.heart-values-content-detailed p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* Style for heart values content side headings */
+.heart-values-content-detailed p strong:first-child {
+  display: block;
+  font-family: 'Georgia', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffc170;
+  /* margin-bottom: 0.4rem; */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid rgba(255, 204, 112, 0.4);
+  /* padding-bottom: 0.8rem; */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .heart-values-container {
+    margin: 1.5rem auto 0;
+  }
+  
+  .heart-values-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .heart-values-icon {
+    font-size: 2.5rem;
+  }
+  
+  .heart-values-content h3 {
+    font-size: 1.5rem;
+  }
+  
+  .heart-values-content p {
+    font-size: 1rem;
+  }
+  
+  .heart-values-popup-content {
+    width: 95%;
+    margin: 1rem;
+  }
+  
+  .heart-values-header {
+    padding: 2rem;
+  }
+  
+  .heart-values-title-section {
+    gap: 1.5rem;
+  }
+  
+  .heart-values-icon-large {
+    font-size: 3rem;
+  }
+  
+  .heart-values-title h3 {
+    font-size: 1.8rem;
+  }
+  
+  .heart-values-body {
+    padding: 2rem;
+  }
+  
+  .heart-values-content-detailed p {
+    font-size: 1.1rem;
   }
 }

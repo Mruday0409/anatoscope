@@ -1,4 +1,4 @@
-// src/pages/Heart.jsx
+ // src/pages/Heart.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import "../styles/Heart.css";
@@ -89,6 +89,28 @@ Left ventricular function is a key indicator of overall heart health. Conditions
 A key measure of left ventricular function is the ejection fraction, which represents the percentage of blood pumped out of the ventricle with each beat.</p>` },
 ];
 
+// Heart Values Data
+const heartValuesData = {
+  title: "Valves of Heart",
+  shortDesc: "The heart has four valves: the aortic, mitral, tricuspid, and pulmonary valves. These valves ensure that blood flows in one direction through the heart and body. They open and close in a coordinated manner, allowing blood to move from the atria to the ventricles and then out to the lungs and the rest of the body.",
+  fullDesc: `<p><strong>Aortic valve:</strong><br/>
+Located between the left ventricle and the aorta, it regulates blood flow to the rest of the body. .</p>
+<p><strong>Mitral valve:</strong><br/>
+Situated between the left atrium and left ventricle, it prevents backflow of blood from the ventricle to the atrium. </p>
+<p><strong>Tricuspid valve:</strong><br/>
+Found between the right atrium and right ventricle, it ensures blood flows in the correct direction within the right side of the heart. </p>
+<p><strong>Pulmonary valve:</strong><br/>
+Located between the right ventricle and the pulmonary artery, it allows blood to flow to the lungs for oxygenation.</p>
+<p><strong>Blood Pressure:</strong><br/>
+Normal blood pressure is typically 120/80 mmHg. Systolic pressure (top number) represents pressure during heart contraction, while diastolic pressure (bottom number) represents pressure during heart relaxation.</p>
+<p><strong>Cardiac Output:</strong><br/>
+The amount of blood pumped by the heart per minute, typically 4-8 liters per minute at rest. This increases significantly during exercise to meet the body's increased oxygen demands.</p>
+<p><strong>Ejection Fraction:</strong><br/>
+The percentage of blood ejected from the left ventricle with each heartbeat. Normal ejection fraction is 50-70%. Values below 40% may indicate heart failure.</p>
+<p><strong>Stroke Volume:</strong><br/>
+The amount of blood pumped by the left ventricle in one contraction, typically 60-100 milliliters. This is a key indicator of heart efficiency and overall cardiovascular health.</p>`
+};
+
 const Heart = () => {
   const section2Ref = useRef(null);
   const isInView = useInView(section2Ref, { once: false, margin: "-100px" });
@@ -101,6 +123,9 @@ const Heart = () => {
   const [selectedChamber, setSelectedChamber] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideshowRef = useRef(null);
+
+  // 🔹 Added for Heart Values
+  const [showHeartValues, setShowHeartValues] = useState(false);
 
   // Manual navigation
   const nextSlide = () => {
@@ -116,6 +141,8 @@ const Heart = () => {
     const startIndex = currentSlide * 2;
     return chambersData.slice(startIndex, startIndex + 2);
   };
+
+
 
   useEffect(() => {
     if (isInView) {
@@ -134,6 +161,8 @@ const Heart = () => {
     setShowPopup(false);
     setSelectedPart(null);
   };
+
+
 
   const textVariant = {
     hidden: { opacity: 0, x: 60, rotate: -10, filter: "blur(6px)" },
@@ -289,6 +318,24 @@ const Heart = () => {
                 </button>
               </div>
             </div>
+            
+            {/* Heart Values Horizontal Card */}
+            <div className="heart-valves-container">
+              <motion.div 
+                className="heart-values-card"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                onClick={() => setShowHeartValues(true)}
+              >
+                <div className="heart-values-icon">📊</div>
+                <div className="heart-values-content">
+                  <h3>{heartValuesData.title}</h3>
+                  <p>{heartValuesData.shortDesc}</p>
+                </div>
+                <div className="heart-values-arrow">→</div>
+              </motion.div>
+            </div>
           </div>
           <div className="section-3-right">
             <img src={heartImage3} alt="Heart" className="section-3-heart-img" />
@@ -323,6 +370,42 @@ const Heart = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.4 }}
                   dangerouslySetInnerHTML={{ __html: selectedChamber.fullDesc }}
+                />
+              </div>
+            </motion.div>
+          </div>
+        )}
+
+
+
+        {/* Heart Values Popup */}
+        {showHeartValues && (
+          <div className="popup-overlay heart-values-popup" onClick={() => setShowHeartValues(false)}>
+            <motion.div 
+              className="popup-content heart-values-popup-content" 
+              initial={{ opacity: 0, scale: 0.8, rotateY: -15 }} 
+              animate={{ opacity: 1, scale: 1, rotateY: 0 }} 
+              exit={{ opacity: 0, scale: 0.8, rotateY: 15 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="popup-header heart-values-header">
+                <div className="heart-values-title-section">
+                  <div className="heart-values-icon-large">📊</div>
+                  <div className="heart-values-title">
+                    <h3>{heartValuesData.title}</h3>
+                    <span className="heart-values-subtitle">Vital Statistics</span>
+                  </div>
+                </div>
+                <button className="close-btn heart-values-close" onClick={() => setShowHeartValues(false)}>×</button>
+              </div>
+              <div className="popup-body heart-values-body">
+                <motion.div 
+                  className="heart-values-content-detailed"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2, duration: 0.4 }}
+                  dangerouslySetInnerHTML={{ __html: heartValuesData.fullDesc }}
                 />
               </div>
             </motion.div>

@@ -339,87 +339,17 @@ body[data-theme="dark"] .section-title h2 {
   background-color: #ff3333;
 }
 
-/* Popup Modal Styles */
+/* Base Popup Overlay */
 .popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10000;
-  backdrop-filter: blur(5px);
-}
-
-.popup-content {
-  background: white;
-  border-radius: 15px;
-  padding: 0;
-  max-width: 500px;
-  width: 90%;
-  max-height: 80vh;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  position: relative;
-}
-
-.popup-header {
-  background: linear-gradient(135deg, #ff4444, #ff6b6b);
-  color: white;
-  padding: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.popup-header h3 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 0;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
-}
-
-.close-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.popup-body {
-  padding: 2rem;
-  color: #333;
-  line-height: 1.6;
-}
-
-.popup-body p {
-  margin: 0 0 1rem 0;
-  font-size: 1.1rem;
-}
-
-/* Dark theme popup */
-body[data-theme="dark"] .popup-content {
-  background: #1a1a1a;
-  color: white;
-}
-
-body[data-theme="dark"] .popup-body {
-  color: #ffffff;
 }
 
 @keyframes wipeInLeft {
@@ -550,48 +480,207 @@ body[data-theme="dark"] .popup-body {
   margin-bottom: 2rem;
 }
 
-.chamber-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
+/* Slideshow Styles */
+.chambers-slideshow {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+}
+
+.slideshow-container {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  min-height: 280px;
 }
 
 .chamber-card {
-  background: var(--card-bg, #fff);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.chamber-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 203, 112, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.chamber-card:hover::before {
+  opacity: 1;
 }
 
 body[data-theme="dark"] .chamber-card {
-  background: #1e1e1e;
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(40, 40, 40, 0.85));
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+body[data-theme="dark"] .chamber-card::before {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(255, 203, 112, 0.15));
 }
 
 .chamber-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(255, 107, 107, 0.3);
+  border-color: rgba(255, 107, 107, 0.4);
 }
 
 .chamber-card h3 {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: #333;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+body[data-theme="dark"] .chamber-card h3 {
+  color: #ffffff;
 }
 
 .chamber-card p {
-  font-size: 0.95rem;
-  opacity: 0.8;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+  flex-grow: 1;
+  transition: all 0.3s ease;
+}
+
+body[data-theme="dark"] .chamber-card p {
+  color: #cccccc;
+}
+
+.chamber-card:hover h3 {
+  color: #ff6b6b;
+  transform: translateX(5px);
+}
+
+.chamber-card:hover p {
+  color: #555;
+}
+
+body[data-theme="dark"] .chamber-card:hover p {
+  color: #ffffff;
 }
 
 .read-more {
-  display: inline-block;
-  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
   color: #ff6b6b;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  margin-top: auto;
+}
+
+.read-more::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6b6b, #ffcc70);
+  transition: width 0.3s ease;
+}
+
+.chamber-card:hover .read-more::after {
+  width: 100%;
+}
+
+.chamber-card:hover .read-more {
+  color: #ff5252;
+  transform: translateX(5px);
+}
+
+/* Navigation Controls */
+.slideshow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 203, 112, 0.1));
+  border: 2px solid #ff6b6b;
+  color: #ff6b6b;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.8rem;
   font-weight: bold;
-  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg, #ff6b6b, #ffcc70);
+  color: white;
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+.nav-btn:active {
+  transform: scale(0.95);
+}
+
+/* Slide Indicators */
+.slide-indicators {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.indicator {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #ff6b6b;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.2);
+}
+
+.indicator.active {
+  background: linear-gradient(135deg, #ff6b6b, #ffcc70);
+  transform: scale(1.3);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.indicator:hover {
+  background: rgba(255, 107, 107, 0.5);
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
 }
 
 .section-3-right {
@@ -615,5 +704,374 @@ body[data-theme="dark"] .chamber-card {
   }
   .section-3-right {
     order: -1;
+  }
+  
+  .slideshow-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .chamber-card {
+    flex: none;
+    height: 220px;
+    padding: 1.5rem;
+  }
+  
+  .chamber-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .slideshow-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .slide-indicators {
+    order: -1;
+  }
+}
+
+/* Popup Styles - Section 2 (Anatomy Parts) */
+.section2-popup {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.section2-popup-content {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 24px;
+  border: 2px solid rgba(255, 107, 107, 0.2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  overflow: hidden;
+}
+
+.section2-popup-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #ffcc70, #ff6b6b);
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.section2-header {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 203, 112, 0.1));
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 107, 107, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-title-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.part-number-badge {
+  background: linear-gradient(135deg, #ff6b6b, #ffcc70);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.section2-header h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.section2-close {
+  background: rgba(255, 107, 107, 0.1);
+  border: 2px solid #ff6b6b;
+  color: #ff6b6b;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.section2-close:hover {
+  background: #ff6b6b;
+  color: white;
+  transform: scale(1.1);
+}
+
+.section2-body {
+  padding: 2rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.section2-body p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  border-left: 3px solid transparent;
+  padding-left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.section2-body p:hover {
+  border-left-color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.05);
+  padding-left: 1.5rem;
+}
+
+/* Popup Styles - Section 3 (Chambers) */
+.section3-popup {
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.section3-popup-content {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 107, 107, 0.1);
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  overflow: hidden;
+}
+
+.section3-popup-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(255, 203, 112, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.section3-header {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 203, 112, 0.2));
+  padding: 2rem;
+  border-bottom: 1px solid rgba(255, 107, 107, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chamber-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.chamber-icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 4px 8px rgba(255, 107, 107, 0.3));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.chamber-title h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.chamber-subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.section3-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.section3-close:hover {
+  background: rgba(255, 107, 107, 0.8);
+  border-color: #ff6b6b;
+  transform: scale(1.1);
+}
+
+.section3-body {
+  padding: 2rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.chamber-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  text-align: justify;
+}
+
+/* Chamber Content Side Headings */
+.chamber-content {
+  position: relative;
+}
+
+.chamber-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: justify;
+}
+
+/* Style for side headings in chamber content */
+.chamber-content p:has(strong:first-child),
+.chamber-content p strong:first-child {
+  display: block;
+  font-family: 'Georgia', serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Style for nested strong tags within chamber content */
+.chamber-content p strong:not(:first-child) {
+  color: #ffcc70;
+  font-weight: 600;
+  font-size: 0.7rem;
+  margin-right: 0.5rem;
+}
+
+/* Style for section 2 popup side headings */
+.section2-body p strong:first-child {
+  display: block;
+  font-family: 'Georgia', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ff6b6b;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid rgba(255, 107, 107, 0.3);
+  padding-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for nested strong tags in section 2 */
+.section2-body p strong:not(:first-child) {
+  color: #ff6b6b;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+
+/* Dark theme adjustments for section 2 popup */
+body[data-theme="dark"] .section2-popup-content {
+  background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+  border-color: rgba(255, 107, 107, 0.4);
+}
+
+body[data-theme="dark"] .section2-header {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 203, 112, 0.2));
+}
+
+body[data-theme="dark"] .section2-header h3 {
+  color: #ffffff;
+}
+
+body[data-theme="dark"] .section2-body p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body[data-theme="dark"] .section2-body p:hover {
+  background: rgba(255, 107, 107, 0.1);
+}
+
+/* Dark theme adjustments for section 2 side headings */
+body[data-theme="dark"] .section2-body p strong:first-child {
+  color: #ffcc70;
+  border-bottom-color: rgba(255, 204, 112, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section2-popup-content,
+  .section3-popup-content {
+    width: 95%;
+    margin: 1rem;
+  }
+  
+  .section2-header,
+  .section3-header {
+    padding: 1.5rem;
+  }
+  
+  .section2-body,
+  .section3-body {
+    padding: 1.5rem;
+  }
+  
+  .chamber-info {
+    gap: 1rem;
+  }
+  
+  .chamber-icon {
+    font-size: 2.5rem;
+  }
+  
+  .chamber-title h3 {
+    font-size: 1.5rem;
+  }
+  
+  .popup-title-section {
+    gap: 0.8rem;
+  }
+  
+  .part-number-badge {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
   }
 }

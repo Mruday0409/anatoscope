@@ -5,6 +5,62 @@ import HomeNavbar from "../components/HomeNavbar";
 
 import "../styles/Home.css";
 
+// ✅ Typing Animation Component
+const TypingAnimation = ({ text, speed = 50, loop = true }) => {
+  const [displayText, setDisplayText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
+
+  useEffect(() => {
+    if (!text) return;
+
+    if (isTyping) {
+      if (currentIndex < text.length) {
+        const timer = setTimeout(() => {
+          setDisplayText(text.slice(0, currentIndex + 1));
+          setCurrentIndex(currentIndex + 1);
+        }, speed);
+        return () => clearTimeout(timer);
+      } else {
+        // Finished typing, wait before starting to delete
+        const timer = setTimeout(() => {
+          setIsTyping(false);
+        }, 2000);
+        return () => clearTimeout(timer);
+      }
+    } else {
+      // Deleting text
+      if (currentIndex > 0) {
+        const timer = setTimeout(() => {
+          setDisplayText(text.slice(0, currentIndex - 1));
+          setCurrentIndex(currentIndex - 1);
+        }, speed / 2);
+        return () => clearTimeout(timer);
+      } else {
+        // Finished deleting, wait before starting to type again
+        const timer = setTimeout(() => {
+          setIsTyping(true);
+        }, 1000);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [text, currentIndex, isTyping, speed, loop]);
+
+  // Reset animation when text changes
+  useEffect(() => {
+    setDisplayText("");
+    setCurrentIndex(0);
+    setIsTyping(true);
+  }, [text]);
+
+  return (
+    <span className="typing-text">
+      {displayText}
+      <span className="typing-cursor">|</span>
+    </span>
+  );
+};
+
 // ✅ All videos centralized here
 const organVideos = {
   LUNGS: "/models/lungs.mp4",
@@ -135,7 +191,9 @@ const Home = () => {
             {/* Text Column */}
             <div className="col-md-6 d-flex flex-column justify-content-center align-items-start">
               <h2 className="organ-title">{currentOrgan.name}</h2>
-              <p className="organ-description">{currentOrgan.description}</p>
+              <p className="organ-description">
+                <TypingAnimation text={currentOrgan.description} />
+              </p>
               <button
                 onClick={() => navigate(currentOrgan.route)}
                 className="circular-btn"

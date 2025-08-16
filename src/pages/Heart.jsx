@@ -127,6 +127,103 @@ const Heart = () => {
   // 🔹 Added for Heart Values
   const [showHeartValues, setShowHeartValues] = useState(false);
 
+  // 🔹 Added for Blood Supply Details
+  const [selectedBloodSupply, setSelectedBloodSupply] = useState(null);
+
+  // Blood Supply Detailed Content
+  const bloodSupplyContent = {
+    lca: {
+      title: "Left Coronary Artery (LCA)",
+      icon: "❤️",
+      color: "#ff6b6b",
+      content: {
+        origin: "Left aortic sinus",
+        course: "Runs for a short distance then divides into two main branches",
+        branches: [
+          {
+            name: "Anterior Interventricular Artery (LAD)",
+            description: "Supplies anterior 2/3 of interventricular septum, anterior wall of left ventricle"
+          },
+          {
+            name: "Circumflex Artery (Cx)",
+            description: "Runs in left atrioventricular groove, gives left marginal branch"
+          },
+          {
+            name: "SA Nodal Branch",
+            description: "In 40% of people, from circumflex branch"
+          }
+        ],
+        areasSupplied: [
+          "Left atrium",
+          "Most of left ventricle",
+          "Part of right ventricle (anterior surface)",
+          "Anterior 2/3 of interventricular septum",
+          "SA node (40% cases)"
+        ]
+      }
+    },
+    rca: {
+      title: "Right Coronary Artery (RCA)",
+      icon: "💙",
+      color: "#ffc170",
+      content: {
+        origin: "Right aortic sinus",
+        course: "Runs in the right atrioventricular (coronary) sulcus",
+        branches: [
+          {
+            name: "Right Atrial Branch",
+            description: "Supplies SA node in ~60% of people"
+          },
+          {
+            name: "Right Marginal Artery",
+            description: "Supplies right ventricle"
+          },
+          {
+            name: "Posterior Interventricular Branch (PDA)",
+            description: "Supplies posterior 1/3 of interventricular septum, and parts of both ventricles"
+          },
+          {
+            name: "AV Nodal Branch",
+            description: "Supplies AV node in ~80% of people"
+          }
+        ],
+        areasSupplied: [
+          "Right atrium",
+          "Most of right ventricle",
+          "Part of left ventricle (posterior-inferior surface)",
+          "Posterior 1/3 of interventricular septum",
+          "SA node (60% cases)",
+          "AV node (80% cases)"
+        ]
+      }
+    },
+    veins: {
+      title: "Venous Drainage",
+      icon: "💜",
+      color: "#8a2be2",
+      content: {
+        mainDrainage: "Coronary sinus (into right atrium)",
+        minorSources: [
+          "Anterior cardiac veins",
+          "Venae cordis minimae"
+        ],
+        tributaries: [
+          "Great cardiac vein",
+          "Middle cardiac vein",
+          "Small cardiac vein",
+          "Posterior vein of left ventricle",
+          "Oblique vein of left atrium"
+        ],
+        clinicalSignificance: [
+          "Primary route for venous return from heart muscle",
+          "Essential for maintaining cardiac circulation",
+          "Important in cardiac catheterization procedures",
+          "Can be affected in various cardiac pathologies"
+        ]
+      }
+    }
+  };
+
   // Manual navigation
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % Math.ceil(chambersData.length / 2));
@@ -407,6 +504,388 @@ const Heart = () => {
                   transition={{ delay: 0.2, duration: 0.4 }}
                   dangerouslySetInnerHTML={{ __html: heartValuesData.fullDesc }}
                 />
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </section>
+
+      {/* Section 4 - Blood Supply of the Heart */}
+      <section className="section section-4">
+        <div className="blood-supply-container">
+          {/* Background Animation */}
+          <div className="blood-flow-animation">
+            <div className="blood-cell blood-cell-1"></div>
+            <div className="blood-cell blood-cell-2"></div>
+            <div className="blood-cell blood-cell-3"></div>
+            <div className="blood-cell blood-cell-4"></div>
+            <div className="blood-cell blood-cell-5"></div>
+            <div className="blood-cell blood-cell-6"></div>
+            <div className="blood-cell blood-cell-7"></div>
+            <div className="blood-cell blood-cell-8"></div>
+            <div className="blood-cell blood-cell-9"></div>
+            <div className="blood-cell blood-cell-10"></div>
+          </div>
+
+          {/* Main Content */}
+          <div className="blood-supply-content">
+            <motion.div 
+              className="blood-supply-header"
+              initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: false }}
+            >
+              <div className="blood-supply-icon">🩸</div>
+              <h2 className="blood-supply-title">Blood Supply of the Heart</h2>
+              <p className="blood-supply-subtitle">Understanding the Coronary Circulation System</p>
+            </motion.div>
+
+            {/* Blood Supply Cards */}
+            <div className="blood-supply-cards">
+              {/* Left Coronary Artery */}
+              <motion.div 
+                className="blood-supply-card left-coronary"
+                initial={{ opacity: 0, x: -100, rotate: -5 }}
+                whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+                transition={{ duration: 0.1, delay: 0.2, ease: "easeOut" }}
+                viewport={{ once: false }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotateY: 5,
+                  boxShadow: "0 20px 40px rgba(255, 107, 107, 0.3)"
+                }}
+                onClick={() => setSelectedBloodSupply('lca')}
+              >
+                <div className="card-header">
+                  <div className="artery-icon">❤️</div>
+                  <h3>Left Coronary Artery (LCA)</h3>
+                  <div className="oxygenated-indicator">Oxygenated</div>
+                </div>
+                <div className="card-content">
+                  <div className="artery-details">
+                    <div className="detail-item">
+                      <span className="detail-label">Origin:</span>
+                      <span className="detail-value">Left aortic sinus</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Course:</span>
+                      <span className="detail-value">Short distance then divides</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Main Branches:</span>
+                      <span className="detail-value">LAD, Circumflex (Cx)</span>
+                    </div>
+                  </div>
+                  <div className="blood-flow-indicator">
+                    <div className="flow-arrow">→</div>
+                    <span>High Flow Rate</span>
+                  </div>
+                  <div className="read-more-indicator">Click for detailed info →</div>
+                </div>
+              </motion.div>
+
+              {/* Right Coronary Artery */}
+              <motion.div 
+                className="blood-supply-card right-coronary"
+                initial={{ opacity: 0, x: 100, rotate: 5 }}
+                whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+                transition={{ duration: 0.1, delay: 0.4, ease: "easeOut" }}
+                viewport={{ once: false }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotateY: -5,
+                  boxShadow: "0 20px 40px rgba(255, 203, 112, 0.3)"
+                }}
+                onClick={() => setSelectedBloodSupply('rca')}
+              >
+                <div className="card-header">
+                  <div className="artery-icon">💙</div>
+                  <h3>Right Coronary Artery (RCA)</h3>
+                  <div className="oxygenated-indicator">Oxygenated</div>
+                </div>
+                <div className="card-content">
+                  <div className="artery-details">
+                    <div className="detail-item">
+                      <span className="detail-label">Origin:</span>
+                      <span className="detail-value">Right aortic sinus</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Course:</span>
+                      <span className="detail-value">Right atrioventricular sulcus</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Main Branches:</span>
+                      <span className="detail-value">Right marginal, PDA, AV nodal</span>
+                    </div>
+                  </div>
+                  <div className="blood-flow-indicator">
+                    <div className="flow-arrow">→</div>
+                    <span>Moderate Flow Rate</span>
+                  </div>
+                  <div className="read-more-indicator">Click for detailed info →</div>
+                </div>
+              </motion.div>
+
+              {/* Coronary Veins */}
+              <motion.div 
+                className="blood-supply-card coronary-veins"
+                initial={{ opacity: 0, y: 100, rotate: 3 }}
+                whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                transition={{ duration: 0.1, delay: 0.4, ease: "easeOut" }}
+                viewport={{ once: false }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotateY: 3,
+                  boxShadow: "0 20px 40px rgba(138, 43, 226, 0.3)"
+                }}
+                onClick={() => setSelectedBloodSupply('veins')}
+              >
+                <div className="card-header">
+                  <div className="artery-icon">💜</div>
+                  <h3>Venous Drainage</h3>
+                  <div className="deoxygenated-indicator">Deoxygenated</div>
+                </div>
+                <div className="card-content">
+                  <div className="artery-details">
+                    <div className="detail-item">
+                      <span className="detail-label">Main Drainage:</span>
+                      <span className="detail-value">Coronary sinus</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Minor Sources:</span>
+                      <span className="detail-value">Anterior cardiac veins</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Drains to:</span>
+                      <span className="detail-value">Right atrium</span>
+                    </div>
+                  </div>
+                  <div className="blood-flow-indicator">
+                    <div className="flow-arrow reverse">←</div>
+                    <span>Return Flow</span>
+                  </div>
+                  <div className="read-more-indicator">Click for detailed info →</div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Blood Flow Diagram */}
+            <motion.div 
+              className="blood-flow-diagram"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+              viewport={{ once: false }}
+            >
+              <div className="diagram-container">
+                <img src={heartImage} alt="Heart Blood Supply" className="diagram-heart" />
+                <div className="blood-vessels">
+                  <div className="vessel lca-vessel"></div>
+                  <div className="vessel rca-vessel"></div>
+                  <div className="vessel coronary-sinus"></div>
+                </div>
+                <div className="flow-labels">
+                  <div className="flow-label lca-label">LCA</div>
+                  <div className="flow-label rca-label">RCA</div>
+                  <div className="flow-label cs-label">CS</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Blood Supply Statistics */}
+            <motion.div 
+              className="blood-supply-stats"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+              viewport={{ once: false }}
+            >
+              <div className="stat-card">
+                <div className="stat-icon">⚡</div>
+                <div className="stat-value">250ml/min</div>
+                <div className="stat-label">Blood Flow</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon">🫀</div>
+                <div className="stat-value">5%</div>
+                <div className="stat-label">Cardiac Output</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon">🔄</div>
+                <div className="stat-value">60-80</div>
+                <div className="stat-label">BPM</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon">💪</div>
+                <div className="stat-value">High</div>
+                <div className="stat-label">Metabolic Rate</div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Blood Supply Detailed Popup */}
+        {selectedBloodSupply && bloodSupplyContent[selectedBloodSupply] && (
+          <div className="popup-overlay blood-supply-popup" onClick={() => setSelectedBloodSupply(null)}>
+            <motion.div 
+              className="popup-content blood-supply-popup-content" 
+              initial={{ opacity: 0, scale: 0.8, rotateY: -15 }} 
+              animate={{ opacity: 1, scale: 1, rotateY: 0 }} 
+              exit={{ opacity: 0, scale: 0.8, rotateY: 15 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+              style={{ 
+                borderLeft: `6px solid ${bloodSupplyContent[selectedBloodSupply].color}`,
+                background: `linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98))`
+              }}
+            >
+              <div className="popup-header blood-supply-header">
+                <div className="blood-supply-title-section">
+                  <div className="blood-supply-icon-large" style={{ color: bloodSupplyContent[selectedBloodSupply].color }}>
+                    {bloodSupplyContent[selectedBloodSupply].icon}
+                  </div>
+                  <div className="blood-supply-title">
+                    <h3>{bloodSupplyContent[selectedBloodSupply].title}</h3>
+                    <span className="blood-supply-subtitle">Coronary Circulation</span>
+                  </div>
+                </div>
+                <button className="close-btn blood-supply-close" onClick={() => setSelectedBloodSupply(null)}>×</button>
+              </div>
+              
+              <div className="popup-body blood-supply-body">
+                <motion.div 
+                  className="blood-supply-content-detailed"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2, duration: 0.4 }}
+                >
+                  {/* Origin and Course */}
+                  <div className="info-section">
+                    <h4 className="section-title">Origin & Course</h4>
+                    <div className="info-grid">
+                      <div className="info-item">
+                        <span className="info-label">Origin:</span>
+                        <span className="info-value">{bloodSupplyContent[selectedBloodSupply].content.origin}</span>
+                      </div>
+                      {bloodSupplyContent[selectedBloodSupply].content.course && (
+                        <div className="info-item">
+                          <span className="info-label">Course:</span>
+                          <span className="info-value">{bloodSupplyContent[selectedBloodSupply].content.course}</span>
+                        </div>
+                      )}
+                      {bloodSupplyContent[selectedBloodSupply].content.mainDrainage && (
+                        <div className="info-item">
+                          <span className="info-label">Main Drainage:</span>
+                          <span className="info-value">{bloodSupplyContent[selectedBloodSupply].content.mainDrainage}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Branches */}
+                  {bloodSupplyContent[selectedBloodSupply].content.branches && (
+                    <div className="info-section">
+                      <h4 className="section-title">Main Branches</h4>
+                      <div className="branches-list">
+                        {bloodSupplyContent[selectedBloodSupply].content.branches.map((branch, index) => (
+                          <motion.div 
+                            key={index} 
+                            className="branch-item"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1, duration: 0.3 }}
+                          >
+                            <div className="branch-name">{branch.name}</div>
+                            <div className="branch-description">{branch.description}</div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Areas Supplied */}
+                  {bloodSupplyContent[selectedBloodSupply].content.areasSupplied && (
+                    <div className="info-section">
+                      <h4 className="section-title">Areas Supplied</h4>
+                      <div className="areas-grid">
+                        {bloodSupplyContent[selectedBloodSupply].content.areasSupplied.map((area, index) => (
+                          <motion.div 
+                            key={index} 
+                            className="area-item"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: index * 0.05, duration: 0.3 }}
+                          >
+                            <span className="area-bullet">•</span>
+                            <span className="area-text">{area}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Minor Sources */}
+                  {bloodSupplyContent[selectedBloodSupply].content.minorSources && (
+                    <div className="info-section">
+                      <h4 className="section-title">Minor Sources</h4>
+                      <div className="minor-sources-list">
+                        {bloodSupplyContent[selectedBloodSupply].content.minorSources.map((source, index) => (
+                          <motion.div 
+                            key={index} 
+                            className="source-item"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1, duration: 0.3 }}
+                          >
+                            {source}
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Tributaries */}
+                  {bloodSupplyContent[selectedBloodSupply].content.tributaries && (
+                    <div className="info-section">
+                      <h4 className="section-title">Tributaries</h4>
+                      <div className="tributaries-grid">
+                        {bloodSupplyContent[selectedBloodSupply].content.tributaries.map((tributary, index) => (
+                          <motion.div 
+                            key={index} 
+                            className="tributary-item"
+                            initial={{ opacity: 0, rotateY: -10 }}
+                            animate={{ opacity: 1, rotateY: 0 }}
+                            transition={{ delay: index * 0.1, duration: 0.3 }}
+                          >
+                            {tributary}
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Clinical Significance */}
+                  {bloodSupplyContent[selectedBloodSupply].content.clinicalSignificance && (
+                    <div className="info-section">
+                      <h4 className="section-title">Clinical Significance</h4>
+                      <div className="clinical-list">
+                        {bloodSupplyContent[selectedBloodSupply].content.clinicalSignificance.map((significance, index) => (
+                          <motion.div 
+                            key={index} 
+                            className="clinical-item"
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1, duration: 0.3 }}
+                          >
+                            <span className="clinical-icon">🏥</span>
+                            <span className="clinical-text">{significance}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
               </div>
             </motion.div>
           </div>

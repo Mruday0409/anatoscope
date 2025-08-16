@@ -28,6 +28,31 @@ html, body, #root {
   text-shadow: 0.5px 0.5px 3px rgba(0, 0, 0, 0.4);
 }
 
+/* === Typing Animation Styles === */
+.typing-text {
+  display: inline-block;
+  position: relative;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.5rem;
+  background-color: #e236c5;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
 /* === Read More Button === */
 
 

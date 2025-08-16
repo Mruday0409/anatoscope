@@ -1348,3 +1348,1151 @@ body[data-theme="dark"] .heart-values-content p {
     font-size: 1.1rem;
   }
 }
+
+/* ===== Section 4 - Blood Supply of the Heart ===== */
+.section-4 {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+/* Blood Flow Animation Background */
+.blood-flow-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.blood-cell {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #ff6b6b 0%, #ff4757 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+  animation: float 6s ease-in-out infinite;
+}
+
+.blood-cell-1 {
+  top: 20%;
+  left: 10%;
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.blood-cell-2 {
+  top: 60%;
+  right: 15%;
+  animation: float2 8s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+.blood-cell-3 {
+  top: 80%;
+  left: 20%;
+  animation: float3 7s ease-in-out infinite;
+  animation-delay: 2.4s;
+}
+
+.blood-cell-4 {
+  top: 30%;
+  right: 25%;
+  animation: float 9s ease-in-out infinite;
+  animation-delay: 3.6s;
+}
+
+.blood-cell-5 {
+  top: 70%;
+  left: 5%;
+  animation: float2 10s ease-in-out infinite;
+  animation-delay: 4.8s;
+}
+
+.blood-cell-6 {
+  top: 15%;
+  right: 10%;
+  animation: float3 11s ease-in-out infinite;
+  animation-delay: 6s;
+}
+
+.blood-cell-7 {
+  top: 85%;
+  right: 5%;
+  animation: float 7.5s ease-in-out infinite;
+  animation-delay: 7.2s;
+}
+
+.blood-cell-8 {
+  top: 45%;
+  left: 15%;
+  animation: float2 9.5s ease-in-out infinite;
+  animation-delay: 8.4s;
+}
+
+.blood-cell-9 {
+  top: 25%;
+  left: 60%;
+  animation: float3 8.5s ease-in-out infinite;
+  animation-delay: 9.6s;
+}
+
+.blood-cell-10 {
+  top: 75%;
+  right: 35%;
+  animation: float 12s ease-in-out infinite;
+  animation-delay: 10.8s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-15px) rotate(90deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-10px) rotate(270deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes float2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.6;
+  }
+  33% {
+    transform: translateY(-25px) rotate(120deg) scale(1.1);
+    opacity: 1;
+  }
+  66% {
+    transform: translateY(-15px) rotate(240deg) scale(0.9);
+    opacity: 0.8;
+  }
+}
+
+@keyframes float3 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Blood Supply Container */
+.blood-supply-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.blood-supply-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* Blood Supply Header */
+.blood-supply-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.blood-supply-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: bloodPulse 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.6));
+}
+
+.blood-supply-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ff6b6b, #ffc170, #ff6b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.blood-supply-subtitle {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Blood Supply Cards */
+.blood-supply-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.blood-supply-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.blood-supply-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 203, 112, 0.1));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.blood-supply-card:hover::before {
+  opacity: 1;
+}
+
+.left-coronary {
+  border-left: 4px solid #ff6b6b;
+}
+
+.right-coronary {
+  border-left: 4px solid #ffc170;
+}
+
+.coronary-veins {
+  border-left: 4px solid #8a2be2;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.artery-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.card-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  flex: 1;
+}
+
+.oxygenated-indicator,
+.deoxygenated-indicator {
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.oxygenated-indicator {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+}
+
+.deoxygenated-indicator {
+  background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+  color: white;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.artery-details {
+  margin-bottom: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.blood-flow-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.flow-arrow {
+  font-size: 1.2rem;
+  color: #4CAF50;
+  animation: flowPulse 2s ease-in-out infinite;
+}
+
+.flow-arrow.reverse {
+  color: #9C27B0;
+  animation: flowPulseReverse 2s ease-in-out infinite;
+}
+
+.blood-flow-indicator span {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+@keyframes flowPulse {
+  0%, 100% {
+    transform: translateX(0) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateX(3px) scale(1.1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateX(5px) scale(1.2);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(3px) scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+@keyframes flowPulseReverse {
+  0%, 100% {
+    transform: translateX(0) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateX(-3px) scale(1.1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateX(-5px) scale(1.2);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(-3px) scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+@keyframes bloodPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.6));
+  }
+  25% {
+    transform: scale(1.05) rotate(5deg);
+    filter: drop-shadow(0 0 25px rgba(255, 107, 107, 0.8));
+  }
+  50% {
+    transform: scale(1.1) rotate(0deg);
+    filter: drop-shadow(0 0 30px rgba(255, 107, 107, 1));
+  }
+  75% {
+    transform: scale(1.05) rotate(-5deg);
+    filter: drop-shadow(0 0 25px rgba(255, 107, 107, 0.8));
+  }
+}
+
+@keyframes statIconFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
+  25% {
+    transform: translateY(-3px) scale(1.05);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+  }
+  50% {
+    transform: translateY(-5px) scale(1.1);
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
+  }
+  75% {
+    transform: translateY(-3px) scale(1.05);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+  }
+}
+
+/* Blood Flow Diagram */
+.blood-flow-diagram {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.diagram-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diagram-heart {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+.blood-vessels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.vessel {
+  position: absolute;
+  background: linear-gradient(90deg, #ff6b6b, #ff4757);
+  border-radius: 3px;
+  animation: vesselPulse 3s ease-in-out infinite;
+}
+
+.lca-vessel {
+  top: 20%;
+  left: 30%;
+  width: 80px;
+  height: 4px;
+  transform: rotate(-30deg);
+  animation: vesselPulse 4s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.rca-vessel {
+  top: 25%;
+  right: 25%;
+  width: 70px;
+  height: 4px;
+  transform: rotate(45deg);
+  animation: vesselPulse2 5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.coronary-sinus {
+  bottom: 30%;
+  left: 50%;
+  width: 60px;
+  height: 4px;
+  transform: translateX(-50%) rotate(0deg);
+  background: linear-gradient(90deg, #9C27B0, #7B1FA2);
+  animation: vesselPulse3 6s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@keyframes vesselPulse {
+  0%, 100% {
+    opacity: 0.6;
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+    transform: scale(1);
+  }
+  25% {
+    opacity: 0.8;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.6);
+    transform: scale(1.05);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
+    transform: scale(1.1);
+  }
+  75% {
+    opacity: 0.9;
+    box-shadow: 0 0 18px rgba(255, 107, 107, 0.7);
+    transform: scale(1.08);
+  }
+}
+
+@keyframes vesselPulse2 {
+  0%, 100% {
+    opacity: 0.5;
+    box-shadow: 0 0 8px rgba(255, 203, 112, 0.3);
+    transform: scale(1);
+  }
+  33% {
+    opacity: 0.7;
+    box-shadow: 0 0 12px rgba(255, 203, 112, 0.5);
+    transform: scale(1.03);
+  }
+  66% {
+    opacity: 0.9;
+    box-shadow: 0 0 16px rgba(255, 203, 112, 0.7);
+    transform: scale(1.06);
+  }
+}
+
+@keyframes vesselPulse3 {
+  0%, 100% {
+    opacity: 0.4;
+    box-shadow: 0 0 6px rgba(138, 43, 226, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 14px rgba(138, 43, 226, 0.6);
+    transform: scale(1.04);
+  }
+}
+
+.flow-labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.flow-label {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.lca-label {
+  top: 15%;
+  left: 35%;
+}
+
+.rca-label {
+  top: 20%;
+  right: 30%;
+}
+
+.cs-label {
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Blood Supply Statistics */
+.blood-supply-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 203, 112, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.stat-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  animation: statIconFloat 4s ease-in-out infinite;
+}
+
+.stat-card:nth-child(1) .stat-icon {
+  animation-delay: 0s;
+}
+
+.stat-card:nth-child(2) .stat-icon {
+  animation-delay: 1s;
+}
+
+.stat-card:nth-child(3) .stat-icon {
+  animation-delay: 2s;
+}
+
+.stat-card:nth-child(4) .stat-icon {
+  animation-delay: 3s;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive Design for Section 4 */
+@media (max-width: 768px) {
+  .section-4 {
+    padding: 2rem 1rem;
+  }
+
+  .blood-supply-title {
+    font-size: 2.5rem;
+  }
+
+  .blood-supply-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .blood-supply-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .blood-supply-card {
+    padding: 1.5rem;
+  }
+
+  .card-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .diagram-container {
+    width: 300px;
+    height: 300px;
+  }
+
+  .blood-supply-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1.5rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blood-supply-title {
+    font-size: 2rem;
+  }
+
+  .blood-supply-icon {
+    font-size: 3rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .artery-icon {
+    font-size: 2rem;
+  }
+
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .diagram-container {
+    width: 250px;
+    height: 250px;
+  }
+
+  .blood-supply-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Read More Indicator */
+.read-more-indicator {
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.blood-supply-card:hover .read-more-indicator {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Blood Supply Popup Styles */
+.blood-supply-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 2rem;
+}
+
+.blood-supply-popup-content {
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  position: relative;
+}
+
+.blood-supply-popup-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(255, 203, 112, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.blood-supply-header {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 203, 112, 0.2));
+  padding: 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.blood-supply-title-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.blood-supply-icon-large {
+  font-size: 4rem;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.blood-supply-title h3 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.blood-supply-subtitle {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.blood-supply-close {
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  color: #333;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+}
+
+.blood-supply-close:hover {
+  background: rgba(255, 107, 107, 0.9);
+  border-color: #ff6b6b;
+  color: white;
+  transform: scale(1.1);
+}
+
+.blood-supply-body {
+  padding: 2rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.blood-supply-content-detailed {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.info-section {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(255, 107, 107, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  border-left: 3px solid #ff6b6b;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-weight: 500;
+  color: #555;
+  font-size: 0.9rem;
+  text-align: right;
+  max-width: 60%;
+}
+
+.branches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.branch-item {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding: 1rem;
+  border-left: 4px solid #ffc170;
+  transition: all 0.3s ease;
+}
+
+.branch-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.branch-name {
+  font-weight: 700;
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.branch-description {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.8rem;
+}
+
+.area-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.area-item:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.02);
+}
+
+.area-bullet {
+  color: #ff6b6b;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.area-text {
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.minor-sources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.source-item {
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  color: #555;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-left: 3px solid #8a2be2;
+  transition: all 0.3s ease;
+}
+
+.source-item:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateX(5px);
+}
+
+.tributaries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem;
+}
+
+.tributary-item {
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  color: #555;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-align: center;
+  border: 2px solid rgba(138, 43, 226, 0.3);
+  transition: all 0.3s ease;
+}
+
+.tributary-item:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: #8a2be2;
+  transform: scale(1.05);
+}
+
+.clinical-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.clinical-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  border-left: 4px solid #4CAF50;
+  transition: all 0.3s ease;
+}
+
+.clinical-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateX(5px);
+}
+
+.clinical-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.clinical-text {
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Responsive Design for Blood Supply Popup */
+@media (max-width: 768px) {
+  .blood-supply-popup {
+    padding: 1rem;
+  }
+
+  .blood-supply-popup-content {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .blood-supply-header {
+    padding: 1.5rem;
+  }
+
+  .blood-supply-title-section {
+    gap: 1rem;
+  }
+
+  .blood-supply-icon-large {
+    font-size: 3rem;
+  }
+
+  .blood-supply-title h3 {
+    font-size: 1.8rem;
+  }
+
+  .blood-supply-body {
+    padding: 1.5rem;
+  }
+
+  .info-section {
+    padding: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .info-value {
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tributaries-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .blood-supply-title h3 {
+    font-size: 1.5rem;
+  }
+
+  .blood-supply-icon-large {
+    font-size: 2.5rem;
+  }
+
+  .blood-supply-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .blood-supply-close {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
